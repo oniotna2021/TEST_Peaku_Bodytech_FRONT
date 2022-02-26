@@ -118,7 +118,7 @@ function App() {
       return <div className="text-white">NO HAY CONSULTA</div>;
     } else {
       if (Vector === "a") {
-        <div>A</div>;
+        <div>NO HAY TOKEN</div>;
       
       } else {
         let productPagina = Vector.tracks.items.slice(
@@ -143,15 +143,17 @@ function App() {
               <br />
 
               <div className="page-content">
-                <div className="container">
+                <div className="
+                
+                ">
                   <div className="row">
-                    <div className="col-lg-12">
+                    <div className="col12 col-lg-12">
                       <div className="products mb-3">
                         <div className="row justify-content-center">
 
                           {/* mapeo de las canciones en el contenedor  */}
                           {productPagina.map((cancion) => (
-                            <div className="col-6 col-md-4 col-lg-4">
+                            <div className="col-md-4 col-lg-3 col-sm-12 marginl">
                               <div className="product product-7 text-center">
                                 <figure className="product-media">
                                   <div>
@@ -170,7 +172,7 @@ function App() {
                                       title="Vista Rapida"
                                     >
                                       <span className="text-white">
-                                        Artista: {cancion.album.artists[0].name}
+                                        <trong>ARTISTA: </trong>{cancion.album.artists[0].name}
                                       </span>
                                     </div>
                                   </div>
@@ -198,7 +200,7 @@ function App() {
                                       title="Vista Rapida"
                                     >
                                       <span className="text-white">
-                                        Album: {cancion.album.name}
+                                        <trong>ALBUM: </trong> {cancion.album.name}
                                       </span>
                                     </div>
                                   </div>
@@ -208,7 +210,7 @@ function App() {
                                       title="Vista Rapida"
                                     >
                                       <span className="text-white">
-                                        Cancion: {cancion.name}
+                                      <trong>CANCION: </trong> {cancion.name}
                                       </span>
                                     </div>
                                   </div>
@@ -271,9 +273,9 @@ function App() {
         <form onSubmit={enviarDatos}>
           <div class="mb-3 row justify-content-center">
             <input
-              placeholder="INTRODUZCA EL TERMINO AQUI Y PRESIONE ENVIAR"
+              placeholder="AQUI"
               type="text"
-              className="form-control w-25"
+              className="form-control w-50"
               onChange={handleInputChange}
               name="consulta"
             />
