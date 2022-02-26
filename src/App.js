@@ -263,11 +263,14 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div className="App row justify-content-center">
       <div>
         <h1 className="text-white">BIENVENIDO AL API DE CONSULTA DE SPOTIFY</h1>
       </div>
-      <div><img src="https://c.tenor.com/iczjaEFdW20AAAAC/spotify-music.gif" alt="spotify"></img></div>
+      <div className="col3 row justify-content-center w-25">
+        <img src="https://c.tenor.com/iczjaEFdW20AAAAC/spotify-music.gif" alt="spotify">
+        </img>
+      </div>
       <div className="row justify-content-center">
         <h3 className="text-white">Introduzca un termino de busqueda</h3>
         <form onSubmit={enviarDatos}>
