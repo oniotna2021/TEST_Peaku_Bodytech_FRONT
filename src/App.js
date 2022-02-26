@@ -115,7 +115,7 @@ function App() {
   const mostrarCanciones = () => {
     if (Condicion === false) {
     
-      return <div className="text-white">NO HAY CONSULTA</div>;
+      return <div className="text-white">NO HAY CONSULTA, Intruduce un termino y presiona enviar</div>;
     } else {
       if (Vector === "a") {
         <div>NO HAY TOKEN</div>;
@@ -267,7 +267,7 @@ function App() {
       <div>
         <h1 className="text-white">BIENVENIDO AL API DE CONSULTA DE SPOTIFY</h1>
       </div>
-
+      <div><img src="https://c.tenor.com/iczjaEFdW20AAAAC/spotify-music.gif" alt="spotify"></img></div>
       <div className="row justify-content-center">
         <h3 className="text-white">Introduzca un termino de busqueda</h3>
         <form onSubmit={enviarDatos}>
