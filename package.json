@@ -1,5 +1,6 @@
 {
-  "name": "proyecto",
+  "name": "test_spotify_peaku_bodytech",
+  "author":"Antonio Mogollon",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
