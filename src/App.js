@@ -134,9 +134,9 @@ function App() {
               <div className="page-header text-center">
                 <div className="container co">
                   <br />
-                  <h3 className="page-title text-white">
+                  <h5 className="page-title text-white">
                     Resultados de tu consulta
-                  </h3>
+                  </h5>
                 </div>
               </div>
 
@@ -161,7 +161,7 @@ function App() {
                                       <img
                                         src={cancion.album.images[1].url}
                                         alt="Product"
-                                        className="product-image "
+                                        className="product-image rounded"
                                       />
                                     </a>
                                     <br />
@@ -265,14 +265,14 @@ function App() {
   return (
     <div className="App row justify-content-center">
       <div>
-        <h1 className="text-white">BIENVENIDO AL API DE CONSULTA DE SPOTIFY</h1>
+        <h3 className="text-white">BIENVENIDO AL API DE CONSULTA DE SPOTIFY</h3>
       </div>
-      <div className="col3 row justify-content-center w-25">
+      <div className="col3 row justify-content-center w-50">
         <img src="https://c.tenor.com/iczjaEFdW20AAAAC/spotify-music.gif" alt="spotify">
         </img>
       </div>
       <div className="row justify-content-center">
-        <h3 className="text-white">Introduzca un termino de busqueda</h3>
+        <h5 className="text-white">Introduzca un termino de busqueda</h5>
         <form onSubmit={enviarDatos}>
           <div class="mb-3 row justify-content-center">
             <input
