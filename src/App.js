@@ -37,31 +37,31 @@ function App() {
   };
 
   //token de login en spotify se creo una ruta en un backend privado para obtener el token
-//  const express = require('express');
-// const router = express.Router();
-// var request = require('request');
-// router.get('/', async (req,res) => {
-//     var client_id = '629ae71881f44dbb86b08fe751cc5d0f';
-//     var client_secret = 'd4827318c5984c60ba06cfe355540d0c';
-// var authOptions = {
-//   url: 'https://accounts.spotify.com/api/token',
-//   headers: {
-//     'Authorization': 'Basic ' + (new Buffer(client_id + ':' + client_secret).toString('base64'))
-//   },
-//   form: {
-//     grant_type: 'client_credentials'
-//   },
-//   json: true
-// };
-// request.post(authOptions, function(error, response, body) {
-//   if (!error && response.statusCode === 200) {
-//     var token = body.access_token;
-//     res.json(token);
-//   }
-// });
+  //  const express = require('express');
+  // const router = express.Router();
+  // var request = require('request');
+  // router.get('/', async (req,res) => {
+  //     var client_id = '629ae71881f44dbb86b08fe751cc5d0f';
+  //     var client_secret = 'd4827318c5984c60ba06cfe355540d0c';
+  // var authOptions = {
+  //   url: 'https://accounts.spotify.com/api/token',
+  //   headers: {
+  //     'Authorization': 'Basic ' + (new Buffer(client_id + ':' + client_secret).toString('base64'))
+  //   },
+  //   form: {
+  //     grant_type: 'client_credentials'
+  //   },
+  //   json: true
+  // };
+  // request.post(authOptions, function(error, response, body) {
+  //   if (!error && response.statusCode === 200) {
+  //     var token = body.access_token;
+  //     res.json(token);
+  //   }
+  // });
 
-// });
-// module.exports = router;
+  // });
+  // module.exports = router;
 
   const obtenerToken = async () => {
     await fetch("https://backend-amtec-drop.herokuapp.com/api/spotify", {
@@ -82,7 +82,7 @@ function App() {
     setCondicion(true);
     // console.log("enviando datos..." + datos.consulta);
     await fetch(
-      `https://api.spotify.com/v1/search?type=track&include_external=audio&q=name:${datos.consulta}`,
+      `https://api.spotify.com/v1/search?type=track&include_external=audio&q=artist:${datos.consulta}`,
       {
         method: "GET",
         headers: {
@@ -91,15 +91,17 @@ function App() {
       }
     )
       .then((response) => response.json())
-      .then((data) => setVector(data), 
-      // console.log(Vector)
+      .then(
+        (data) => setVector(data),
+        console.log(Vector)
       )
       .catch((err) => console.log(err), event.preventDefault())
-      .then(({ beats }) => {
-        beats.forEach((beat, index) => {
-          console.log(`Beat ${index} starts at ${beat.start}`);
-        });
-      });
+      //Se apago esta condicion porque da error en consola el indice no esta definido
+      // .then(({ beats }) => {
+      //   beats.forEach((beat, index) => {
+      //     console.log(`Beat ${index} starts at ${beat.start}`);
+      //   });
+      // });
 
     event.preventDefault();
   };
@@ -114,12 +116,14 @@ function App() {
   // Renderizado de l contenedor de canciones
   const mostrarCanciones = () => {
     if (Condicion === false) {
-    
-      return <div className="text-white">NO HAY CONSULTA, Intruduce un termino y presiona enviar</div>;
+      return (
+        <div className="text-white">
+          NO HAY CONSULTA, Intruduce un termino y presiona enviar
+        </div>
+      );
     } else {
       if (Vector === "a") {
         <div>NO HAY TOKEN</div>;
-      
       } else {
         let productPagina = Vector.tracks.items.slice(
           (paginaActual - 1) * TOTAL_POR_PAGINA,
@@ -137,20 +141,24 @@ function App() {
                   <h5 className="page-title text-white">
                     Resultados de tu consulta
                   </h5>
+                  <h6 className="page-title text-white">
+                    ¡ Presiona sobre la imagen para ver detalles del album !
+                  </h6>
                 </div>
               </div>
 
               <br />
 
               <div className="page-content">
-                <div className="
+                <div
+                  className="
                 
-                ">
+                "
+                >
                   <div className="row">
                     <div className="col12 col-lg-12">
                       <div className="products mb-3">
                         <div className="row justify-content-center">
-
                           {/* mapeo de las canciones en el contenedor  */}
                           {productPagina.map((cancion) => (
                             <div className="col-md-4 col-lg-3 col-sm-12 marginl">
@@ -172,7 +180,8 @@ function App() {
                                       title="Vista Rapida"
                                     >
                                       <span className="text-white">
-                                        <trong>ARTISTA: </trong>{cancion.album.artists[0].name}
+                                        <strong>ARTISTA: </strong>
+                                        {cancion.album.artists[0].name}
                                       </span>
                                     </div>
                                   </div>
@@ -189,7 +198,7 @@ function App() {
                                           }
                                           target="_blank"
                                         >
-                                          Ver Artista
+                                          DETALLE DEL ARTISTA
                                         </a>
                                       </span>
                                     </div>
@@ -200,7 +209,8 @@ function App() {
                                       title="Vista Rapida"
                                     >
                                       <span className="text-white">
-                                        <trong>ALBUM: </trong> {cancion.album.name}
+                                        <strong>ALBUM: </strong>{" "}
+                                        {cancion.album.name}
                                       </span>
                                     </div>
                                   </div>
@@ -210,11 +220,11 @@ function App() {
                                       title="Vista Rapida"
                                     >
                                       <span className="text-white">
-                                      <trong>CANCION: </trong> {cancion.name}
+                                        <strong>CANCION: </strong> {cancion.name}
                                       </span>
                                     </div>
                                   </div>
-                                  <div className="product-action-vertical">
+                                  {/* <div className="product-action-vertical">
                                     <div
                                       className="btn-product-icon btn-quickview"
                                       title="Vista Rapida"
@@ -228,15 +238,22 @@ function App() {
                                         </a>
                                       </span>
                                     </div>
-                                  </div>
+                                  </div> */}
                                   <div className="product-action">
-                                    <a
+                                    <audio controls>
+                                      <source
+                                        src={cancion.preview_url}
+                                        type="audio/mp3"
+                                      />
+                                      Tu navegador no soporta audio HTML5.
+                                    </audio>
+                                    {/* <a
                                       href={cancion.external_urls.spotify}
                                       className="btn-product btn-cart"
                                       target="_blank"
                                     >
                                       <span>Ver detalle</span>
-                                    </a>
+                                    </a> */}
                                   </div>
                                 </figure>
                               </div>
@@ -265,16 +282,18 @@ function App() {
   return (
     <div className="App row justify-content-center">
       <div>
-        <h3 className="text-white">BIENVENIDO AL API DE CONSULTA DE SPOTIFY</h3>
+        <h3 className="text-white">BIENVENIDO A LA APP DE CONSULTA DE SPOTIFY</h3>
       </div>
       <div className="col3 row justify-content-center w-50">
-        <img src="https://c.tenor.com/iczjaEFdW20AAAAC/spotify-music.gif" alt="spotify">
-        </img>
+        <img
+          src="https://c.tenor.com/iczjaEFdW20AAAAC/spotify-music.gif"
+          alt="spotify"
+        ></img>
       </div>
       <div className="row justify-content-center">
         <h5 className="text-white">Introduzca un termino de busqueda</h5>
         <form onSubmit={enviarDatos}>
-          <div class="mb-3 row justify-content-center">
+          <div className="mb-3 row justify-content-center">
             <input
               placeholder="AQUI"
               type="text"
@@ -283,7 +302,7 @@ function App() {
               name="consulta"
             />
           </div>
-          <button type="submit" class="btn btn-primary">
+          <button type="submit" className="btn btn-primary">
             ENVIAR
           </button>
         </form>
