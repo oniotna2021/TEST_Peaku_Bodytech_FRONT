@@ -165,7 +165,9 @@ function App() {
                               <div className="product product-7 text-center">
                                 <figure className="product-media">
                                   <div>
-                                    <a href={cancion.external_urls.spotify}>
+                                    <a href={cancion.external_urls.spotify}
+                                        target="_blank"
+                                    >
                                       <img
                                         src={cancion.album.images[1].url}
                                         alt="Product"
