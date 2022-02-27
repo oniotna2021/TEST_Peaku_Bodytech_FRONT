@@ -93,7 +93,7 @@ function App() {
       .then((response) => response.json())
       .then(
         (data) => setVector(data),
-       // console.log(Vector)
+       console.log(Vector)
       )
       .catch((err) => alert(err), event.preventDefault())
       //Se apago esta condicion porque da error en consola el indice no esta definido
@@ -103,7 +103,7 @@ function App() {
       //   });
       // });
 
-    event.preventDefault();
+    
   };
 
   const TOTAL_POR_PAGINA = 6;
@@ -112,6 +112,16 @@ function App() {
     let cantidadTotalDeProductos = Vector.tracks.items.length;
     return Math.ceil(cantidadTotalDeProductos / TOTAL_POR_PAGINA);
   };
+
+  function secondsToString(seconds) {
+    var hour = Math.floor(seconds / 3600);
+    hour = (hour < 10)? '0' + hour : hour;
+    var minute = Math.floor((seconds / 60) % 60);
+    minute = (minute < 10)? '0' + minute : minute;
+    var second = seconds % 60;
+    second = (second < 10)? '0' + second : second;
+    return minute + ':' + Math.trunc(second);
+  }
 
   // Renderizado de l contenedor de canciones
   const mostrarCanciones = () => {
@@ -165,7 +175,7 @@ function App() {
                               <div className="product product-7 text-center">
                                 <figure className="product-media">
                                   <div>
-                                    <a href={cancion.external_urls.spotify}
+                                    <a href={cancion.album.external_urls.spotify}
                                         target="_blank"
                                     >
                                       <img
@@ -215,6 +225,9 @@ function App() {
                                         {cancion.album.name}
                                       </span>
                                     </div>
+                                    <span className="text-white">
+                                        Duracion: {secondsToString(cancion.duration_ms)}
+                                        </span>
                                   </div>
                                   <div className="product-action-vertical">
                                     <div
@@ -224,37 +237,38 @@ function App() {
                                       <span className="text-white">
                                         <strong>CANCION: </strong> {cancion.name}
                                       </span>
+                                      
                                     </div>
                                   </div>
-                                  {/* <div className="product-action-vertical">
+                                  <div className="product-action-vertical">
                                     <div
                                       className="btn-product-icon btn-quickview"
                                       title="Vista Rapida"
                                     >
                                       <span className="text-white">
                                         <a
-                                          href={cancion.preview_url}
+                                          href={cancion.external_urls.spotify}
                                           target="_blank"
                                         >
-                                          PREVIEW
+                                          DETALLE DE LA CANCION
                                         </a>
                                       </span>
                                     </div>
-                                  </div> */}
+                                  </div>
+                                  <span className="text-white">
+                                        Duracion: {secondsToString(cancion.duration_ms/1000)}
+                                        </span>
                                   <div className="product-action">
+                                  <span className="text-white">PREVIEW</span>
                                     <audio controls>
                                       <source
                                         src={cancion.preview_url}
                                         type="audio/mp3"
                                       />
                                     </audio>
-                                    {/* <a
-                                      href={cancion.external_urls.spotify}
-                                      className="btn-product btn-cart"
-                                      target="_blank"
-                                    >
-                                      <span>Ver detalle</span>
-                                    </a> */}
+                                  
+                                      
+                                    
                                   </div>
                                 </figure>
                               </div>
