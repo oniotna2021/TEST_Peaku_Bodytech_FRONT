@@ -93,9 +93,9 @@ function App() {
       .then((response) => response.json())
       .then(
         (data) => setVector(data),
-        console.log(Vector)
+       // console.log(Vector)
       )
-      .catch((err) => console.log(err), event.preventDefault())
+      .catch((err) => alert(err), event.preventDefault())
       //Se apago esta condicion porque da error en consola el indice no esta definido
       // .then(({ beats }) => {
       //   beats.forEach((beat, index) => {
@@ -245,7 +245,6 @@ function App() {
                                         src={cancion.preview_url}
                                         type="audio/mp3"
                                       />
-                                      Tu navegador no soporta audio HTML5.
                                     </audio>
                                     {/* <a
                                       href={cancion.external_urls.spotify}
