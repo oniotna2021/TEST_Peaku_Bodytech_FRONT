@@ -10,6 +10,11 @@ body{
   background-color: black;
 }
 
+@font-face {
+  font-family: "Gotham";
+  src: url("../assets/GothamBold.ttf") format("truetype");
+}
+
 
 
 .App-logo {

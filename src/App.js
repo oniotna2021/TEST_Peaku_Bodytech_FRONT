@@ -294,7 +294,7 @@ function App() {
   return (
     <div className="App row justify-content-center">
       <div>
-        <h3 className="text-white">BIENVENIDO A LA APP DE CONSULTA DE SPOTIFY</h3>
+        <h3 className="text-white" font="GothamBold">Bienvenido a la APP de consulta de Spotify</h3>
       </div>
       <div className="col3 row justify-content-center w-50">
         <img
