@@ -93,7 +93,7 @@ function App() {
       .then((response) => response.json())
       .then(
         (data) => setVector(data),
-       console.log(Vector)
+       //console.log(Vector)
       )
       .catch((err) => alert(err), event.preventDefault())
       //Se apago esta condicion porque da error en consola el indice no esta definido
