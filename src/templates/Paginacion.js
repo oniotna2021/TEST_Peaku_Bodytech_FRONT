@@ -18,6 +18,7 @@ export default function Paginacion(props) {
 
   return (
     //Retorna una barra nav que se renderiza en la parte inferior del contenedor de canciones
+    //permite navegar a traves del paginado
   <nav aria-label="Page navigation">
       <ul className="pagination justify-content-center">
 

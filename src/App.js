@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-target-blank */
 import "./App.css";
 import { useEffect, useState } from "react";
 import Paginacion from "./templates/Paginacion";
@@ -114,8 +115,8 @@ function App() {
   };
 
   function secondsToString(seconds) {
-    var hour = Math.floor(seconds / 3600);
-    hour = (hour < 10)? '0' + hour : hour;
+    // var hour = Math.floor(seconds / 3600);
+    // hour = (hour < 10)? '0' + hour : hour;
     var minute = Math.floor((seconds / 60) % 60);
     minute = (minute < 10)? '0' + minute : minute;
     var second = seconds % 60;
@@ -204,6 +205,7 @@ function App() {
                                     >
                                       <span className="text-white">
                                         <a
+                                          className="cspoti"
                                           href={
                                             cancion.album.artists[0]
                                               .external_urls.spotify
@@ -244,6 +246,7 @@ function App() {
                                     >
                                       <span className="text-white">
                                         <a
+                                          className="cspoti"
                                           href={cancion.external_urls.spotify}
                                           target="_blank"
                                         >

@@ -15,6 +15,10 @@ body{
   src: url("../assets/GothamBold.ttf") format("truetype");
 }
 
+.cspoti{
+  color: #81b71a ;
+}
+
 
 
 .App-logo {
