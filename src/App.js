@@ -225,9 +225,6 @@ function App() {
                                         {cancion.album.name}
                                       </span>
                                     </div>
-                                    <span className="text-white">
-                                        Duracion: {secondsToString(cancion.duration_ms)}
-                                        </span>
                                   </div>
                                   <div className="product-action-vertical">
                                     <div
