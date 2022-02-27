@@ -95,7 +95,7 @@ function App() {
         (data) => setVector(data),
        //console.log(Vector)
       )
-      .catch((err) => alert(err), event.preventDefault())
+      .catch((err) => alert(err), window.location.reload())
       //Se apago esta condicion porque da error en consola el indice no esta definido
       // .then(({ beats }) => {
       //   beats.forEach((beat, index) => {
