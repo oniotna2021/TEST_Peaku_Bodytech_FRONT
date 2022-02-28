@@ -302,10 +302,13 @@ function App() {
       <div className="col3 row justify-content-center w-50">
         <img
           src="https://c.tenor.com/iczjaEFdW20AAAAC/spotify-music.gif"
+          // src="../public/logo.png"
+          // className="w-25"
+
           alt="spotify"
         ></img>
       </div>
-      <div className="row justify-content-center">
+      <div className="row justify-content-center degrade">
         <h5 className="text-white">Introduzca un termino de busqueda</h5>
         <form onSubmit={enviarDatos}>
           <div className="mb-3 row justify-content-center">
@@ -320,6 +323,8 @@ function App() {
           <button type="submit" className="btn btn-primary">
             ENVIAR
           </button>
+          <br/>
+          <br/>
         </form>
       </div>
 
